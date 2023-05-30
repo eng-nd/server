@@ -1,6 +1,5 @@
 const jwt = require("jsonwebtoken");
 const { UserList } = require("../models/userListModal");
-const { User } = require("../models/userModel");
 const AppError = require("../utils/appError");
 const crypto = require("crypto");
 const Email = require("./../utils/email");
@@ -21,7 +20,7 @@ exports.issueToken = (req, res, next) => {
     const token = generateAccessToken(payload);
 
     res.cookie("jwt", token, {
-      expires: new Date(Date.now() + 24 * 60 * 60 * 1000),
+      expires: new Date(Date.now() + 24 * 60 * 60 * 7),
       httpOnly: true,
       secure: req.secure || req.headers["x-forwarded-proto"] === "https",
     });

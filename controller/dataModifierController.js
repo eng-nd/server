@@ -113,6 +113,7 @@ exports.addInDepartment = (req, res, next) => {
     let dpCollection;
 
     switch (department) {
+      // Siddarth, manoj ji, gm, op, dme, md,
       case 1001: {
         dpCollection = General;
         break;
@@ -182,7 +183,7 @@ exports.addDocs = (req, res, next) => {
     Stats.findOne({})
       .select(toSearch)
       .then((stats) => {
-        const documentId = stats[toSearch] + 1 + 9011;
+        const documentId = stats[toSearch] + 1 + 6000;
         dataToAdd.documentId = documentId;
         const collection = req.body.type;
 
@@ -198,11 +199,11 @@ exports.addDocs = (req, res, next) => {
             break;
           }
           case "forms": {
-            dpCollection = Checklist;
+            dpCollection = Forms;
             break;
           }
           case "checklist": {
-            dpCollection = Forms;
+            dpCollection = Checklist;
             break;
           }
         }

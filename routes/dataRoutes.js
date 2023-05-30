@@ -1,8 +1,6 @@
 const express = require("express");
-const userController = require("../controller/userController");
 const accessController = require("../controller/accessController");
 const dataController = require("../controller/dataController");
-const dataModifierController = require("../controller/dataModifierController");
 const router = express.Router();
 
 router
@@ -36,5 +34,33 @@ router
     accessController.verifyToken,
     accessController.checkAccess,
     dataController.getPlaylist
+  );
+
+router
+  .route("/sales/customerForInfo")
+  .get(
+    accessController.verifyToken,
+    accessController.checkAccess,
+    dataController.getCustomerForSendingMessage
+  );
+
+router.route("/ticket/whoCanFill").get(
+  // accessController.verifyToken,
+  // accessController.checkAccess,
+  dataController.getDetailsWhoCanFillTicket
+);
+
+router.route("/ticket/forWhomCanBeFilled").get(
+  // accessController.verifyToken,
+  // accessController.checkAccess,
+  dataController.getDetailsForWhomTicketCanBeFIlled
+);
+
+router
+  .route("/sales/getDataForOrder")
+  .get(
+    accessController.verifyToken,
+    accessController.checkAccess,
+    dataController.getDataForOrderForm
   );
 module.exports = router;

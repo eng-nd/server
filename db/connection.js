@@ -1,7 +1,17 @@
+const mongoose = require("mongoose");
+
 // const DB = process.env.DATABASE.replace(
 //   "<PASSWORD>",
 //   process.env.DATABASE_PASSWORD
 // );
+
+const connectionString = process.env.DATABASE_LIVE.replace(
+  "<password>",
+  process.env.DATABASE_LIVE_PASSWORD
+);
+mongoose.connect(connectionString).then(() => {
+  console.log("Connection to DB successful");
+});
 
 const { UserList } = require("./../models/userListModal");
 const { User } = require("./../models/userModel");
@@ -33,6 +43,9 @@ const {
 } = require("./../task-subapp/models/taskCollectionSchema");
 
 const Suggestions = require("./../participation-feature/models/suggestionModel");
+
+const CustomerData = require("./../models/dataModel");
+
 module.exports = {
   UserList,
   User,
@@ -65,6 +78,9 @@ module.exports = {
   AccountsTask,
   /** Collaboration Specific */
   Suggestions,
+
+  /* Customer data */
+  CustomerData,
 };
 
 /**

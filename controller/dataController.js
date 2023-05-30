@@ -28,6 +28,7 @@ const {
   Dispatch,
   Quality,
   Maintenance,
+  CustomerData,
 } = require("./../db/connection");
 
 exports.loginSuccess = (req, res, next) => {
@@ -290,4 +291,169 @@ exports.getPlaylist = (req, res, next) => {
       ],
     },
   });
+};
+
+exports.getCustomerForSendingMessage = (req, res, next) => {
+  try {
+    CustomerData.find(
+      {},
+      {
+        _id: 0,
+        __v: 0,
+        helpTickerForList: 0,
+        helpTicketCanBeFilledBy: 0,
+        itemList: 0,
+        customerList: 0,
+        locations: 0,
+      }
+    )
+      .then((data) => {
+        res.status(200).json({
+          status: "Success",
+          data,
+        });
+      })
+      .catch((err) => {
+        return next(new AppError(`Internal Server Error! ${err}`, 501));
+      });
+  } catch (err) {
+    return next(new AppError(`Internal Server Error! ${err}`, 501));
+  }
+};
+
+exports.getDetailsWhoCanFillTicket = (req, res, next) => {
+  try {
+    CustomerData.find(
+      {},
+      {
+        _id: 0,
+        __v: 0,
+        helpTickerForList: 0,
+        customerListForInfo: 0,
+        itemList: 0,
+        customerList: 0,
+        locations: 0,
+      }
+    )
+      .then((data) => {
+        res.status(200).json({
+          status: "Success",
+          data,
+        });
+      })
+      .catch((err) => {
+        return next(new AppError(`Internal Server Error! ${err}`, 501));
+      });
+  } catch (err) {
+    return next(new AppError(`Internal Server Error! ${err}`, 501));
+  }
+};
+
+exports.getDetailsForWhomTicketCanBeFIlled = (req, res, next) => {
+  try {
+    CustomerData.find(
+      {},
+      {
+        _id: 0,
+        __v: 0,
+        helpTicketCanBeFilledBy: 0,
+        customerListForInfo: 0,
+        itemList: 0,
+        customerList: 0,
+        locations: 0,
+      }
+    )
+      .then((data) => {
+        res.status(200).json({
+          status: "Success",
+          data,
+        });
+      })
+      .catch((err) => {
+        return next(new AppError(`Internal Server Error! ${err}`, 501));
+      });
+  } catch (err) {
+    return next(new AppError(`Internal Server Error! ${err}`, 501));
+  }
+};
+
+exports.getItemList = (req, res, next) => {
+  try {
+    CustomerData.find(
+      {},
+      {
+        _id: 0,
+        __v: 0,
+        helpTicketCanBeFilledBy: 0,
+        customerListForInfo: 0,
+        helpTickerForList: 0,
+        itemList: 0,
+        locations: 0,
+      }
+    )
+      .then((data) => {
+        res.status(200).json({
+          status: "Success",
+          data,
+        });
+      })
+      .catch((err) => {
+        return next(new AppError(`Internal Server Error! ${err}`, 501));
+      });
+  } catch (err) {
+    return next(new AppError(`Internal Server Error! ${err}`, 501));
+  }
+};
+
+exports.getCustomerList = (req, res, next) => {
+  try {
+    CustomerData.find(
+      {},
+      {
+        _id: 0,
+        __v: 0,
+        helpTicketCanBeFilledBy: 0,
+        customerListForInfo: 0,
+        helpTickerForList: 0,
+        itemList: 0,
+      }
+    )
+      .then((data) => {
+        res.status(200).json({
+          status: "Success",
+          data,
+        });
+      })
+      .catch((err) => {
+        return next(new AppError(`Internal Server Error! ${err}`, 501));
+      });
+  } catch (err) {
+    return next(new AppError(`Internal Server Error! ${err}`, 501));
+  }
+};
+
+exports.getDataForOrderForm = (req, res, next) => {
+  try {
+    CustomerData.find(
+      {},
+      {
+        _id: 0,
+        __v: 0,
+        helpTicketCanBeFilledBy: 0,
+        customerListForInfo: 0,
+        helpTickerForList: 0,
+      }
+    )
+      .then((data) => {
+        res.status(200).json({
+          status: "Success",
+          data,
+        });
+      })
+      .catch((err) => {
+        return next(new AppError(`Internal Server Error! ${err}`, 501));
+      });
+  } catch (err) {
+    return next(new AppError(`Internal Server Error! ${err}`, 501));
+  }
 };

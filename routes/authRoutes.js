@@ -32,7 +32,7 @@ router
 
 router
   .route("/verify-status")
-  .get(
+  .post(
     accessController.verifyToken,
     accessController.checkAccess,
     accessController.sendConfirmationStatus
